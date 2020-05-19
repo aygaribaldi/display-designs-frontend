@@ -6,11 +6,8 @@ import { Mutation } from "react-apollo";
 import gql from "graphql-tag";
 
 const DELETE_MUTATION = gql`
-  mutation PostMutation($description: String!, $url: String!) {
-    createDesign(description: $description, url: $url) {
-      url
-      description
-    }
+  mutation DeleteMutation($id: String!) {
+    deleteDesign(id: $id)
   }
 `;
 
