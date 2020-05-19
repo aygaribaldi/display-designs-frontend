@@ -1,6 +1,5 @@
 import React from "react";
 import { Mutation } from "react-apollo";
-import { BrowserRouter, Route } from "react-router-dom";
 import { withRouter } from "react-router";
 import PropTypes from "prop-types";
 
@@ -12,13 +11,20 @@ class DesignForm extends React.Component {
     description: "",
     url: "",
   };
-
+  renderId() {
+    var id = null;
+    if (this.props.id) id = this.props.id;
+    return id;
+  }
   render() {
     const { description, url } = this.state;
 
     return (
       <div>
-        <h1>{this.props.action}</h1>
+        <h1>
+          {this.props.action} | {this.renderId()}
+        </h1>
+
         <div className="flex flex-column mt3 ui labeled input">
           <div className="ui label">Image Url</div>
           <input

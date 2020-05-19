@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router";
 
@@ -9,7 +9,9 @@ class Header extends React.Component {
         <br />
         <div className="ui segment">
           <div className="ui huge header">
-            <h1>Alex Garibaldi's Designs</h1>
+            <Link to="/">
+              <h1>Alex Garibaldi's Designs</h1>
+            </Link>
           </div>
         </div>
         <div className="ui inverted menu">

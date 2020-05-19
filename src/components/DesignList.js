@@ -21,12 +21,10 @@ class DesignList extends Component {
           if (loading) return <div>Fetching</div>;
           if (error) {
             console.log(error);
-            console.log(data);
             return <div>Error</div>;
           }
 
           const linksToRender = data.allDesigns;
-          console.log("ALL LINKS: " + data.Designs);
           return (
             <div className="ui grid stackable">
               {linksToRender.map((design) => (

@@ -24,12 +24,14 @@ class Design extends Component {
               <div className="ui two buttons">
                 <Link
                   to={`/edit/${this.props.design.id}`}
-                  className="ui primary basic button"
+                  className="ui primary button"
                 >
                   Edit
                 </Link>
-                {/* implement modal here */}
-                <Link to="/create" className="ui negative basic button">
+                <Link
+                  to={`/delete/${this.props.design.id}`}
+                  className="ui negative button"
+                >
                   Delete
                 </Link>
               </div>
