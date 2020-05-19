@@ -2,6 +2,7 @@ import React from "react";
 import { Mutation } from "react-apollo";
 import { withRouter } from "react-router";
 import PropTypes from "prop-types";
+import { createBrowserHistory } from "history";
 
 class DesignForm extends React.Component {
   static contextTypes = {
@@ -18,7 +19,7 @@ class DesignForm extends React.Component {
   }
   render() {
     const { description, url } = this.state;
-
+    const history = createBrowserHistory({ forceRefresh: true });
     return (
       <div>
         <h1>
@@ -48,7 +49,7 @@ class DesignForm extends React.Component {
         <Mutation
           mutation={this.props.mutation}
           variables={{ description, url }}
-          onCompleted={() => this.props.history.push("/")}
+          onCompleted={() => history.push("/")}
         >
           {(postMutation) => (
             <button className="ui button" onClick={postMutation}>

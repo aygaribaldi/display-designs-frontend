@@ -4,6 +4,7 @@ import { withRouter } from "react-router";
 import { Link } from "react-router-dom";
 import { Mutation } from "react-apollo";
 import gql from "graphql-tag";
+import { createBrowserHistory } from "history";
 
 const DELETE_MUTATION = gql`
   mutation DeleteMutation($id: String!) {
@@ -20,6 +21,7 @@ class DeleteDesign extends React.Component {
     );
   }
   renderButtons() {
+    const history = createBrowserHistory({ forceRefresh: true });
     const id = this.props.match.params.id;
     return (
       <div>
@@ -29,7 +31,7 @@ class DeleteDesign extends React.Component {
         <Mutation
           mutation={DELETE_MUTATION}
           variables={{ id }}
-          onCompleted={() => this.props.history.push("/")}
+          onCompleted={() => history.push("/")}
         >
           {(deleteMutation) => (
             <button className="ui negative button" onClick={deleteMutation}>
