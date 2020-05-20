@@ -16,7 +16,7 @@ class DeleteDesign extends React.Component {
   renderContent() {
     return (
       <div>
-        Are you sure you want to delete design {this.props.match.params.id}?
+        Are you sure you want to delete design {this.props.location.state.url}?
       </div>
     );
   }
