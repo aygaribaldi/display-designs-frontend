@@ -23,21 +23,37 @@ class EditDesign extends Component {
     description: this.props.location.state.description,
     url: this.props.location.state.url,
   };
-  renderInput = (title, item) => {
+  renderGetUrl = () => {
+    const { url } = this.state;
     return (
       <div className="flex flex-column mt3 ui labeled input">
-        <div className="ui label">{title}</div>
+        <div className="ui label">Image Url</div>
         <input
           className="mb2"
-          value={item}
+          value={url}
           onChange={(e) => this.setState({ url: e.target.value })}
           type="text"
-          placeholder={item}
+          placeholder={url}
         />
       </div>
     );
   };
-
+  renderGetDescription = () => {
+    console.log("in render get description");
+    const { description } = this.state;
+    return (
+      <div className="flex flex-column mt3 ui labeled input">
+        <div className="ui label">Image Description</div>
+        <input
+          className="mb2"
+          value={description}
+          onChange={(e) => this.setState({ description: e.target.value })}
+          type="text"
+          placeholder={description}
+        />
+      </div>
+    );
+  };
   render() {
     const { id, description, url } = this.state;
     const history = createBrowserHistory({ forceRefresh: true });
@@ -51,9 +67,9 @@ class EditDesign extends Component {
             src={require(`../images/${this.props.location.state.url}`)}
           />
           <br />
-          {this.renderInput("Image Description", this.state.description)}
+          {this.renderGetUrl()}
           <br />
-          {this.renderInput("Image url", this.state.url)}
+          {this.renderGetDescription()}
         </div>
 
         <Mutation
@@ -62,7 +78,7 @@ class EditDesign extends Component {
           onCompleted={() => history.push("/")}
         >
           {(patchMutation) => (
-            <button className="ui button" onClick={patchMutation}>
+            <button className="ui button primary" onClick={patchMutation}>
               Submit
             </button>
           )}
