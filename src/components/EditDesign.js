@@ -23,36 +23,21 @@ class EditDesign extends Component {
     description: this.props.location.state.description,
     url: this.props.location.state.url,
   };
-  renderGetUrl = () => {
-    const { url } = this.state;
+  renderInput = (title, item) => {
     return (
       <div className="flex flex-column mt3 ui labeled input">
-        <div className="ui label">Image Url</div>
+        <div className="ui label">{title}</div>
         <input
           className="mb2"
-          value={url}
+          value={item}
           onChange={(e) => this.setState({ url: e.target.value })}
           type="text"
-          placeholder={url}
+          placeholder={item}
         />
       </div>
     );
   };
-  renderGetDescription = () => {
-    const { description } = this.state;
-    return (
-      <div className="flex flex-column mt3 ui labeled input">
-        <div className="ui label">Image Description</div>
-        <input
-          className="mb2"
-          value={description}
-          onChange={(e) => this.setState({ description: e.target.value })}
-          type="text"
-          placeholder={description}
-        />
-      </div>
-    );
-  };
+
   render() {
     const { id, description, url } = this.state;
     const history = createBrowserHistory({ forceRefresh: true });
@@ -63,12 +48,12 @@ class EditDesign extends Component {
           <img
             style={{ width: "270px", height: "300px" }}
             alt={description}
-            src={require(`../images/${url}`)}
+            src={require(`../images/${this.props.location.state.url}`)}
           />
           <br />
-          {this.renderGetUrl()}
+          {this.renderInput("Image Description", this.state.description)}
           <br />
-          {this.renderGetDescription()}
+          {this.renderInput("Image url", this.state.url)}
         </div>
 
         <Mutation
