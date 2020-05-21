@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import gql from "graphql-tag";
 import { Mutation } from "react-apollo";
 import PropTypes from "prop-types";
-import { createBrowserHistory } from "history";
+import history from "../history";
 
 const PATCH_MUTATION = gql`
   mutation PatchMutation($id: String!, $description: String!, $url: String!) {
@@ -56,7 +56,6 @@ class EditDesign extends Component {
   };
   render() {
     const { id, description, url } = this.state;
-    const history = createBrowserHistory({ forceRefresh: true });
     return (
       <>
         <div>
@@ -64,7 +63,7 @@ class EditDesign extends Component {
           <img
             style={{ width: "270px", height: "300px" }}
             alt={description}
-            src={require(`../images/${this.props.location.state.url}`)}
+            src={require(`../../images/${this.props.location.state.url}`)}
           />
           <br />
           {this.renderGetUrl()}

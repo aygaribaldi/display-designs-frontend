@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import gql from "graphql-tag";
 import { Mutation } from "react-apollo";
 import PropTypes from "prop-types";
-import { createBrowserHistory } from "history";
+import history from "../history";
 
 const POST_MUTATION = gql`
   mutation PostMutation($description: String!, $url: String!) {
@@ -24,7 +24,6 @@ class AddDesign extends Component {
 
   render() {
     const { description, url } = this.state;
-    const history = createBrowserHistory({ forceRefresh: true });
     return (
       <div>
         <h1>Add a Design</h1>

@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { Switch, Route } from "react-router-dom";
-import DesignList from "./DesignList";
-import AddDesign from "./AddDesign";
+import DesignList from "./Designs/DesignList";
+import AddDesign from "./Designs/AddDesign";
 import Header from "./Header";
-import EditDesign from "./EditDesign";
-import DeleteDesign from "./DeleteDesign";
+import EditDesign from "./Designs/EditDesign";
+import DeleteDesign from "./Designs/DeleteDesign";
 
 class App extends Component {
   render() {

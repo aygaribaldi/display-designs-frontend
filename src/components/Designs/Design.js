@@ -10,7 +10,7 @@ class Design extends Component {
             <div className="image">
               <img
                 alt={this.props.design.description}
-                src={require(`../images/${this.props.design.url}`)}
+                src={require(`../../images/${this.props.design.url}`)}
               />
             </div>
             <div className="content">
