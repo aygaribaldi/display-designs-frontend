@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import gql from "graphql-tag";
 import { Mutation } from "react-apollo";
-import PropTypes from "prop-types";
 import history from "../history";
 
 const POST_MUTATION = gql`
@@ -14,9 +13,6 @@ const POST_MUTATION = gql`
 `;
 
 class AddDesign extends Component {
-  static contextTypes = {
-    router: PropTypes.object,
-  };
   state = {
     description: "",
     url: "",

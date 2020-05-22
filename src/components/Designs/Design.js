@@ -15,9 +15,6 @@ class Design extends Component {
             </div>
             <div className="content">
               <div className="header">{this.props.design.url}</div>
-              {/* <div className="meta">
-                <a>link id: {this.props.design.id}</a>
-              </div> */}
               <div className="description">{this.props.design.description}</div>
             </div>
             <div className="extra content">
