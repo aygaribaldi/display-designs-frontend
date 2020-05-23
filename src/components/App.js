@@ -5,6 +5,7 @@ import AddDesign from "./Designs/AddDesign";
 import Header from "./Header";
 import EditDesign from "./Designs/EditDesign";
 import DeleteDesign from "./Designs/DeleteDesign";
+import Login from "./Login";
 
 class App extends Component {
   render() {
@@ -16,6 +17,7 @@ class App extends Component {
           <Route path="/add" component={AddDesign} />
           <Route path="/edit/:id" component={EditDesign} />
           <Route path="/delete/:id" component={DeleteDesign} />
+          <Route path="/login" component={Login} />
         </Switch>
       </div>
     );

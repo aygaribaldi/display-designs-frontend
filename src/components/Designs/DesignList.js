@@ -9,6 +9,9 @@ const FEED_QUERY = gql`
       id
       url
       description
+      postedBy {
+        name
+      }
     }
   }
 `;
@@ -21,10 +24,10 @@ class DesignList extends Component {
           if (loading) return <div>Fetching</div>;
           if (error) return <div>Error</div>;
 
-          const linksToRender = data.allDesigns;
+          const designsToRender = data.allDesigns;
           return (
             <div className="ui grid stackable">
-              {linksToRender.map((design) => (
+              {designsToRender.map((design) => (
                 <Design key={design.id} design={design} />
               ))}
             </div>

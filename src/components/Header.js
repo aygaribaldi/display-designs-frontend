@@ -22,7 +22,9 @@ class Header extends React.Component {
             Add Design
           </Link>
           <div className="right menu">
-            <a className="ui item">Logout</a>
+            <Link to="/login" className="item">
+              Login
+            </Link>
           </div>
         </div>
         <br />

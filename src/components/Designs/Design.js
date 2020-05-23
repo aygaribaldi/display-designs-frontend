@@ -15,6 +15,10 @@ class Design extends Component {
             </div>
             <div className="content">
               <div className="header">{this.props.design.url}</div>
+              Posted by: <nbsp />
+              {this.props.design.postedBy
+                ? this.props.design.postedBy.name
+                : "Unknown"}
               <div className="description">{this.props.design.description}</div>
             </div>
             <div className="extra content">
