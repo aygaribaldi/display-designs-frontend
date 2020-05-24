@@ -21,9 +21,11 @@ const SIGNUP_MUTATION = gql`
 
 const LOGIN_MUTATION = gql`
   mutation LoginMutation($email: String!, $password: String!) {
-    signinUser(email: $email, password: $password) {
-      id
-      name
+    signinUser(auth: { email: $email, password: $password }) {
+      user {
+        id
+        name
+      }
     }
   }
 `;
@@ -36,6 +38,11 @@ class Login extends Component {
     name: "",
   };
 
+  renderCurrentUser() {
+    console.log("LOGGED IN: " + this.state.login);
+    console.log("CURRENT NAME: " + this.state.name);
+    console.log("CURRENT EMAIL : " + this.state.email);
+  }
   render() {
     const { login, email, password, name } = this.state;
     return (
