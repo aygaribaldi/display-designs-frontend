@@ -1,9 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router";
+import { AUTH_TOKEN } from "../constants";
 
 class Header extends React.Component {
   render() {
+    const authToken = localStorage.getItem(AUTH_TOKEN);
     return (
       <div>
         <br />
@@ -22,9 +24,26 @@ class Header extends React.Component {
             Add Design
           </Link>
           <div className="right menu">
-            <Link to="/login" className="item">
-              Login
-            </Link>
+            <div className="flex flex-fixed">
+              {authToken ? (
+                <div
+                  className="item"
+                  onMouseOver={() => {
+                    console.log("hovered");
+                  }}
+                  onClick={() => {
+                    localStorage.removeItem(AUTH_TOKEN);
+                    this.props.history.push(`/`);
+                  }}
+                >
+                  Logout
+                </div>
+              ) : (
+                <Link to="/login" className="item">
+                  Login
+                </Link>
+              )}
+            </div>
           </div>
         </div>
         <br />

@@ -22,10 +22,7 @@ const SIGNUP_MUTATION = gql`
 const LOGIN_MUTATION = gql`
   mutation LoginMutation($email: String!, $password: String!) {
     signinUser(auth: { email: $email, password: $password }) {
-      user {
-        id
-        name
-      }
+      token
     }
   }
 `;
@@ -38,11 +35,6 @@ class Login extends Component {
     name: "",
   };
 
-  renderCurrentUser() {
-    console.log("LOGGED IN: " + this.state.login);
-    console.log("CURRENT NAME: " + this.state.name);
-    console.log("CURRENT EMAIL : " + this.state.email);
-  }
   render() {
     const { login, email, password, name } = this.state;
     return (
@@ -70,7 +62,7 @@ class Login extends Component {
             placeholder="Choose a safe password"
           />
         </div>
-        <div className="flex mt3">
+        <div className="item">
           <Mutation
             mutation={login ? LOGIN_MUTATION : SIGNUP_MUTATION}
             variables={{ email, password, name }}
@@ -78,7 +70,7 @@ class Login extends Component {
           >
             {(mutation) => (
               <div className="ui button primary" onClick={mutation}>
-                {login ? "login" : "create account"}
+                {login ? "Login" : "Create Account"}
               </div>
             )}
           </Mutation>
@@ -86,7 +78,7 @@ class Login extends Component {
             className="ui button primary"
             onClick={() => this.setState({ login: !login })}
           >
-            {login ? "need to create an account?" : "already have an account?"}
+            {login ? "Create an Account" : "I already have an account"}
           </div>
         </div>
       </div>
@@ -94,14 +86,14 @@ class Login extends Component {
   }
 
   _confirm = async (data) => {
-    // const { token } = this.state.login ? data.login : data.signup;
-    // this._saveUserData(token);
+    const { token } = this.state.login ? data.signinUser : data.createUser;
+    if (token) this._saveUserData(token);
     this.props.history.push(`/`);
   };
 
-  //   _saveUserData = (token) => {
-  //     localStorage.setItem(AUTH_TOKEN, token);
-  //   };
+  _saveUserData = (token) => {
+    localStorage.setItem(AUTH_TOKEN, token);
+  };
 }
 
 export default Login;

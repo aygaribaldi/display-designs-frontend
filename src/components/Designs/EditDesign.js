@@ -39,7 +39,6 @@ class EditDesign extends Component {
     );
   };
   renderGetDescription = () => {
-    console.log("in render get description");
     const { description } = this.state;
     return (
       <div className="flex flex-column mt3 ui labeled input">
